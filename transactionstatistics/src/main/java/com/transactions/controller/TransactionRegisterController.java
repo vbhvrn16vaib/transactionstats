@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TransactionRegisterController {
 
-	private TransactionService transactionServiceImpl;
+	private TransactionService transactionService;
 
-	public TransactionRegisterController(TransactionService statisticsService) {
-		this.transactionServiceImpl = statisticsService;
+	public TransactionRegisterController(TransactionService transactionService) {
+		this.transactionService = transactionService;
 	}
 
 	@PostMapping("/transactions")
 	public ResponseEntity<Object> addTranscation(@RequestBody TransactionDto transactionDto) {
-		if (transactionServiceImpl.add(transactionDto)) {
+		if (transactionService.add(transactionDto)) {
 			return ResponseEntity.status(HttpStatus.CREATED).build();
 		}
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
