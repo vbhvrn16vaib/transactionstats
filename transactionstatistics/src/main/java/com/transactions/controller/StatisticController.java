@@ -1,21 +1,21 @@
 package com.transactions.controller;
 
 import com.transactions.dto.Statistics;
-import com.transactions.service.StatisticsServiceImpl;
+import com.transactions.service.StatisticsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StatisticController {
 
-	private StatisticsServiceImpl statisticsServiceImpl;
+	private StatisticsService statisticsService;
 
-	public StatisticController(StatisticsServiceImpl statisticsServiceImpl) {
-		this.statisticsServiceImpl = statisticsServiceImpl;
+	public StatisticController(StatisticsService statisticsService) {
+		this.statisticsService = statisticsService;
 	}
 
 	@GetMapping("/statistics")
 	public Statistics getStatistics(){
-		return statisticsServiceImpl.getStats();
+		return statisticsService.getStats();
 	}
 }
