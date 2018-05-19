@@ -65,6 +65,10 @@ public class StatisticsServiceImpl implements StatisticsService {
 		});
 
 		finaResult.setAvg(finaResult.getCount() != 0 ? finaResult.getSum() / finaResult.getCount() : 0);
+		if(finaResult.getCount() == 0){
+			finaResult.setMin(0D);
+			finaResult.setMax(0D);
+		}
 		log.info("{}", finaResult);
 		System.out.println(finaResult);
 		return finaResult;
